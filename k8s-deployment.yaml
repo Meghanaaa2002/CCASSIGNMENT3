@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: text-processor-deployment
+spec:
+  replicas: 2  # Deploy 2 replicas of the container
+  selector:
+    matchLabels:
+      app: text-processor
+  template:
+    metadata:
+      labels:
+        app: text-processor
+    spec:
+      containers:
+      - name: text-processor
+        image: text_processor_image  # Replace with your Docker image name
+        ports:
+        - containerPort: 80  # This port can be adjusted
